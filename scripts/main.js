@@ -1,11 +1,19 @@
-// toggle menu in small view
-const toggleMenu = () => {
-    document.querySelector('#menu').classList.toggle('open');
-}
+const output = (dogs) => {
+    let article = document.createElement("article");
 
-document.querySelector('#toggleMenu').addEventListener('click', toggleMenu);
+    let img = document.createElement("img");
+    img.setAttribute("src", dogs.message);
 
-// set current year in footer
-const currentDate = new Date();
-document.querySelector('#year').textContent = currentDate.getFullYear();
+    article.appendChild(img);
 
+    document.querySelector("#dogs").appendChild(article);
+  };
+
+const getDogs = async () => {
+    const response = await fetch(
+      "https://dog.ceo/api/breeds/image/random"
+    );
+    Dogs = await response.json();
+    output(Dogs);
+  };
+  getDogs();
